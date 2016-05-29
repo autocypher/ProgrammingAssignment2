@@ -1,11 +1,11 @@
-## Put comments here that give an overall description of what your
-## functions do
+## A set of functions to get the inverse of a matrix, using
+## a specialised contruction function, which takes a matrix
+## as an argument, and a function to query and interact with
+## the caching class.
 
-# The function takes a standard R matrix and creates a
-# list containing functions to perform on the matrix.
-# These include the usual get/set and alse the
-# {get/set}inverse which are used to cache and retrieve
-# the cached inverse of the marix
+# The function takes a standard R matrix and creates and
+# returns a list containing functions to use for caching
+# the output of the solve (inverse) matrix function.
 makeCacheMatrix <- function(x = matrix()) {
     cinv <- NULL
     set <- function( y ) {
@@ -26,7 +26,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 # cacheSolve returns a matrix that is the inverse of
-# the speical matric 'x' (created by makeCacheMatrix)
+# the speical matrix 'x' (created by makeCacheMatrix)
 cacheSolve <- function(x, ...) {
     m <- x$getinverse()
     if( ! is.null( m ) ) {
